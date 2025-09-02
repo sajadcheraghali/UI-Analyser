@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import ThemeToggle from '../ThemeToggle';
 import { useSession, signOut } from "next-auth/react";
 
 

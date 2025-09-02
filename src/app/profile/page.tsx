@@ -35,6 +35,7 @@ export default function ProfilePage() {
       } else {
         throw new Error('Failed to fetch user data');
       }
+      // eslint-disable-next-line
     } catch (err) {
       setError('خطا در دریافت اطلاعات کاربر');
     } finally {
@@ -68,6 +69,7 @@ export default function ProfilePage() {
       } else {
         throw new Error(data.message || 'خطا در آپلود تصویر');
       }
+      // eslint-disable-next-line
     } catch (err) {
       setError('خطا در آپلود تصویر');
     } finally {
@@ -106,7 +108,7 @@ export default function ProfilePage() {
         throw new Error(data.message || 'خطا در به‌روزرسانی پروفایل');
       }
     } catch (err) {
-      let error = err as Error;
+      const error = err as Error;
       setError(error.message || 'خطا در به‌روزرسانی پروفایل');
     } finally {
       setIsLoading(false);

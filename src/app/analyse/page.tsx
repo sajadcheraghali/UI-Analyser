@@ -29,8 +29,12 @@ export default function AnalysePage() {
 
       const data = await response.json();
       setAnalysis(data);
-    } catch (err: any) {
-      setError(err.message || 'خطای ناشناخته');
+    } catch (err) {
+      if (err instanceof Error){
+      setError(err.message);
+      }else{
+        console.log('خطای ناشناخته')
+      }
     } finally {
       setLoading(false);
     }

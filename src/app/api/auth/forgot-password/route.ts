@@ -4,6 +4,9 @@ import nodemailer from "nodemailer";
 import { getDatabaseConnection } from "../../../lib/database";
 import { User } from "../../../entities/User";
 
+interface erro {
+  email : string
+}
 export async function POST(req: Request) {
   try {
     // خواندن و بررسی Body
@@ -12,10 +15,10 @@ export async function POST(req: Request) {
       return new Response(JSON.stringify({ message: "Empty request body" }), { status: 400 });
     }
 
-    let body: any;
+    let body :erro;
     try {
       body = JSON.parse(text);
-    } catch (err) {
+    } catch (_err : unknown ) {
       return new Response(JSON.stringify({ message: "Invalid JSON" }), { status: 400 });
     }
 
@@ -40,7 +43,7 @@ export async function POST(req: Request) {
     const resetTokenExp = new Date(Date.now() + 60 * 60 * 1000); // 1 ساعت بعد
 
     user.resetToken = resetToken;
-    user.resetTokenExp = resetTokenExp.toISOString(); // اگر نوع فیلد string باشه
+    user.resetTokenExp = resetTokenExp; // اگر نوع فیلد string باشه
     await connection.getRepository(User).save(user);
 
     const resetUrl = `${process.env.NEXTAUTH_URL}/auth/reset-password?token=${resetToken}`;

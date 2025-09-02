@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import bcrypt from "bcryptjs";
 
 
 export default function Register() {
@@ -43,6 +42,7 @@ const validatePhone = (phone: string) => {
   specialChar: /[@$!%*?&]/.test(password),
 };
   // اعتبارسنجی کلی فرم
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const newErrors = {
       email: '',
@@ -112,6 +112,7 @@ const validatePhone = (phone: string) => {
         setErrors({...errors, form: data.message || 'ثبت‌نام ناموفق بود'});
       }
     } catch (err) {
+      console.log(err)
       setErrors({...errors, form: 'خطایی در ثبت‌نام رخ داد'});
     }
   };

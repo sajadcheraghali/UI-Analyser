@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '../../api/auth/[...nextauth]/route'; // مسیر authOptions را تنظیم کن
+import { authOptions } from '../../lib/auth/option'; 
 
-let comments: { user: string; text: string }[] = [];
+const comments: { user: string; text: string }[] = [];
 
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);

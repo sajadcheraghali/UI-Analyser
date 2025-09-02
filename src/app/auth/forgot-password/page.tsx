@@ -1,13 +1,12 @@
 "use client"
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-  const router = useRouter();
+  
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,7 +29,8 @@ export default function ForgotPassword() {
       } else {
         setError(data.message || "Failed to send reset email");
       }
-    } catch (err) {
+    } catch (e) {
+      console.log(e)
       setError("An error occurred while processing your request");
     }
   };

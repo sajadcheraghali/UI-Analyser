@@ -208,6 +208,7 @@ async function analyzeResponsiveness(page) {
             ? Array.from(sheet.cssRules).filter((r) => r.media).length
             : 0);
       } catch (e) {
+        console.log(e)
         return count;
       }
     }, 0);

@@ -28,13 +28,13 @@ export class User {
   updatedAt!: Date;
 
   @Column({ nullable: true })
-  phone?: string;
+  phone?: string | null;
 
   @Column({ type: "text", nullable: true })
   resetToken?: string;
 
-  @Column({ type: "text", nullable: true })
-  resetTokenExp?: string | null;
+ @Column({ type: "datetime", nullable: true })
+resetTokenExp?: Date | null;
 
   @OneToMany(() => Account, (account) => account.user)
   accounts!: Account[];

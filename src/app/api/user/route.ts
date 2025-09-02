@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../api/auth/[...nextauth]/route";
+import { authOptions } from "../../lib/auth/option";
 import { getDatabaseConnection } from "../../lib/database";
 import { User } from "../../entities/User";
 import type { NextRequest } from "next/server";
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const session = await getServerSession(authOptions);
     

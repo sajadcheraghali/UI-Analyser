@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import { useState } from "react";
-import { useRouter , useSearchParams} from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 export default function ResetPassword() {
@@ -8,8 +8,10 @@ export default function ResetPassword() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
- const searchParams = useSearchParams();
-const token = searchParams.get('token');
+
+  const searchParams = useSearchParams();
+  const token = searchParams.get("token");
+  const router = useRouter(); 
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,24 +26,21 @@ const token = searchParams.get('token');
     try {
       const response = await fetch("/api/auth/reset-password", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ token, password }),
       });
 
       const data = await response.json();
 
-      const router = useRouter();
       if (response.ok) {
         setMessage(data.message);
         setTimeout(() => {
-          router.push("/auth/login");
+          router.push("/auth/login"); 
         }, 2000);
       } else {
         setError(data.message || "Failed to reset password");
       }
-    } catch (err) {
+    } catch (_err) {
       setError("An error occurred while processing your request");
     }
   };

@@ -94,7 +94,7 @@ export default function Login() {
         </form>
         <div className="text-center space-y-2">
           <Link href="/auth/register" className="text-sm text-indigo-600 hover:text-indigo-500 block">
-            Don't have an account? Sign up
+            Dont have an account? Sign up
           </Link>
           <Link href="/auth/forgot-password" className="text-sm text-indigo-600 hover:text-indigo-500 block">
             Forgot your password?

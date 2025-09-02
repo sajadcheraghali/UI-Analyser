@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../../api/auth/[...nextauth]/route"; // مسیر صحیح authOptions را تنظیم کن
+import { authOptions } from "../../../lib/auth/option"; // مسیر صحیح authOptions را تنظیم کن
 import { AppDataSource } from "../../../lib/database";
 import { User } from "../../../entities/User";
 

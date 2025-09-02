@@ -12,7 +12,7 @@ async function getDataSource() {
 }
 
 // GET: لیست همه کاربران
-export async function GET(req: NextRequest) {
+export async function GET() {
   const dataSource = await getDataSource();
   const userRepo = dataSource.getRepository(User);
 
